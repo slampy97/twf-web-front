@@ -1,0 +1,10 @@
+@import "../../styles/abstracts/variables";
+
+.rating-views {
+  display: flex;
+  flex-direction: column;
+
+  &__tab {
+    margin: 2rem 0 !important;
+  }
+}

@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import "./sample-user-page.scss";
 import { Progress } from "antd";
 import "antd/dist/antd.compact.min.css";
-import AchievementConstructor from "../../components/achievement-constructor/achievement-constructor";
+import Achievements from "../../components/achievement-constructor/achievements";
+import RatingView from "../../components/rating-view/rating-view";
 
 function SampleUserPage() {
   return (
@@ -13,9 +14,9 @@ function SampleUserPage() {
           <img
             width={"50rem"}
             height={"auto"}
-            src="https://www.seekpng.com/png/full/921-9210111_i-will-turn-your-photo-into-a-minimalist.png"
+            src="https://yt3.ggpht.com/a/AATXAJwk1dcIOlP31tuvk2J-DjhWpnwVZTqav9AT6Q=s900-c-k-c0xffffffff-no-rj-mo"
           />
-          <div className="sample-user-page__login">vitek_aka</div>
+          <div className="sample-user-page__login">vitek_user</div>
           <div className="sample-user-page__name">Xavi Garsia</div>
         </div>
 
@@ -31,22 +32,26 @@ function SampleUserPage() {
         </div>
       </div>
 
-      <div className="sample-user-page__achieve">
+      <div className="sample-user-page__achieve  u-container">
         {Array(20)
           .fill(1)
           .map((_, i) => {
             return (
-              <AchievementConstructor
+              <Achievements
                 key={i}
-                Description="some info"
-                Title="first achieve"
-                ImgSrc="https://pp.userapi.com/c834100/v834100365/b2de7/l-iX0TyLuhY.jpg"
-                ProgressRate={70}
+                description="some info"
+                title="first achieve"
+                impSrc="https://pp.userapi.com/c834100/v834100365/b2de7/l-iX0TyLuhY.jpg"
+                progressRate={70}
               />
             );
           })}
       </div>
+      <div className="sample-user-page__rating  u-container">
+        <RatingView />
+      </div>
     </div>
   );
 }
+
 export default SampleUserPage;

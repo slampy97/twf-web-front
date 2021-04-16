@@ -36,17 +36,8 @@ const UserRatingTab: React.FC<UserData> = ({
   const iconPath: string =
     [1, 2, 3].indexOf(place) === -1 ? mdiStar : mdiTrophy;
   return (
-    <div
-      // className={`user-rating-tab ${
-      //   currentUser ? "user-rating-tab--current-user" : ""
-      // }`}
-      className="user-rating-tab"
-    >
+    <div className="user-rating-tab">
       <div className="user-rating-tab__place">#{place}</div>
-      {/*<div*/}
-      {/*className="user-rating-tab__avatar"*/}
-      {/*style={{ backgroundImage: `url(${avatarUrl})` }}*/}
-      {/*/>*/}
       <div className="user-rating-tab__name">{name}</div>
       <div className="user-rating-tab__points">
         <span>{points}</span>
