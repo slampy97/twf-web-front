@@ -1,3 +1,9 @@
-.achievement_block {
+.achievement-block {
   margin: 2rem;
+  &__border {
+    border-radius: 50%;
+  }
+  &__image {
+    border-radius: 50%;
+  }
 }

@@ -5,6 +5,7 @@ import { Progress } from "antd";
 import "antd/dist/antd.compact.min.css";
 import Achievements from "../../components/achievement-constructor/achievements";
 import RatingView from "../../components/rating-view/rating-view";
+import RangeSelector from "../../components/rangeImageSelector/range-image-selector";
 
 function SampleUserPage() {
   return (
@@ -24,11 +25,9 @@ function SampleUserPage() {
           <Progress percent={30} />
         </div>
         <div className="sample-user-page__rang">
-          <img
-            width={"50rem"}
-            height={"auto"}
-            src="https://static.tildacdn.com/tild3539-3261-4864-b633-346332316433/trophy-award-icon.jpg"
-          />
+          <div>
+            <RangeSelector levelsPassed={8} ratingCounter={(x) => x} />
+          </div>
         </div>
       </div>
 
@@ -42,7 +41,7 @@ function SampleUserPage() {
                 description="some info"
                 title="first achieve"
                 impSrc="https://pp.userapi.com/c834100/v834100365/b2de7/l-iX0TyLuhY.jpg"
-                progressRate={70}
+                progressRate={i > 13 ? 50 : 100}
               />
             );
           })}
