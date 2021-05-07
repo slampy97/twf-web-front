@@ -1,5 +1,8 @@
 @import "../../styles/abstracts/variables";
 
+.fst_tab {
+  display: flex;
+}
 .rating-views {
   display: flex;
   flex-direction: column;

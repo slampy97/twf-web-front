@@ -5,7 +5,7 @@ import { Progress } from "antd";
 import "antd/dist/antd.compact.min.css";
 import Achievements from "../../components/achievement-constructor/achievements";
 import RatingView from "../../components/rating-view/rating-view";
-import RangeSelector from "../../components/rangeImageSelector/range-image-selector";
+import RangImage from "../../components/rangeImageSelector/range-image-selector";
 
 function SampleUserPage() {
   return (
@@ -26,7 +26,7 @@ function SampleUserPage() {
         </div>
         <div className="sample-user-page__rang">
           <div>
-            <RangeSelector levelsPassed={8} ratingCounter={(x) => x} />
+            <RangImage levelsPassed={5} ratingCounter={(x) => x} />
           </div>
         </div>
       </div>
