@@ -32,7 +32,7 @@ function RatingView({
   fetchUserTabsStartAsync,
 }: ConnectedProps<typeof connector>) {
   const [rangUsers, setRangUsers] = useState<any[]>([]);
-  const my_rating = 500;
+  const my_rating = 3;
   useEffect(() => {
     fetchUserTabsStartAsync({
       levelCode: null,
@@ -49,67 +49,95 @@ function RatingView({
     console.log(userTabs);
   }, [userTabs]);
 
+  const fst_check = my_rating >= 1;
+  const up2_check = my_rating > 3;
+  const up1_check = my_rating > 2;
   return (
     <div>
       <div className="fst-tab">
-        {isAllUserTabsFetched && userTabs && userTabs[0] && (
+        {isAllUserTabsFetched && userTabs && fst_check && userTabs[0] && (
           <UserRatingTab
             name={userTabs[1].fields[1].value}
             points={userTabs[1].fields[2].value}
             place={1}
           />
         )}
-        <hr />
+        <hr
+          style={{
+            color: "darkred",
+            backgroundColor: "blue",
+            height: 5,
+          }}
+        />
       </div>
 
       <div className="rating-views">
         <div className="rating-views__tab">
-          {isAllUserTabsFetched && userTabs && userTabs[my_rating - 2] && (
-            <UserRatingTab
-              name={userTabs[my_rating - 2].fields[1].value}
-              points={userTabs[my_rating - 2].fields[2].value}
-              place={my_rating - 2}
-            />
-          )}
+          {isAllUserTabsFetched &&
+            userTabs &&
+            up2_check &&
+            userTabs[my_rating - 2] && (
+              <UserRatingTab
+                name={userTabs[my_rating - 2].fields[1].value}
+                points={userTabs[my_rating - 2].fields[2].value}
+                place={my_rating - 2}
+              />
+            )}
         </div>
         <div className="rating-views__tab">
-          {isAllUserTabsFetched && userTabs && userTabs[my_rating - 1] && (
-            <UserRatingTab
-              name={userTabs[my_rating - 1].fields[1].value}
-              points={userTabs[my_rating - 1].fields[2].value}
-              place={my_rating - 1}
-            />
-          )}
+          {isAllUserTabsFetched &&
+            userTabs &&
+            up1_check &&
+            userTabs[my_rating - 1] && (
+              <UserRatingTab
+                name={userTabs[my_rating - 1].fields[1].value}
+                points={userTabs[my_rating - 1].fields[2].value}
+                place={my_rating - 1}
+              />
+            )}
+        </div>
+
+        <div
+          className="rating-views__tab"
+          style={{
+            opacity: "1",
+            border: "0.5rem solid #9955aa",
+          }}
+        >
+          {isAllUserTabsFetched &&
+            userTabs &&
+            my_rating > 1 &&
+            userTabs[my_rating] && (
+              <UserRatingTab
+                name={userTabs[my_rating].fields[1].value}
+                points={userTabs[my_rating].fields[2].value}
+                place={my_rating}
+              />
+            )}
         </div>
 
         <div className="rating-views__tab">
-          {isAllUserTabsFetched && userTabs && userTabs[my_rating] && (
-            <UserRatingTab
-              name={userTabs[my_rating].fields[1].value}
-              points={userTabs[my_rating].fields[2].value}
-              place={my_rating}
-            />
-          )}
+          {isAllUserTabsFetched &&
+            userTabs &&
+            my_rating < userTabs.length - 2 && (
+              <UserRatingTab
+                name={userTabs[my_rating + 1].fields[1].value}
+                points={userTabs[my_rating + 1].fields[2].value}
+                place={my_rating + 1}
+              />
+            )}
         </div>
 
         <div className="rating-views__tab">
-          {isAllUserTabsFetched && userTabs && userTabs[my_rating + 1] && (
-            <UserRatingTab
-              name={userTabs[my_rating + 1].fields[1].value}
-              points={userTabs[my_rating + 1].fields[2].value}
-              place={my_rating + 1}
-            />
-          )}
-        </div>
-
-        <div className="rating-views__tab">
-          {isAllUserTabsFetched && userTabs && userTabs[my_rating + 2] && (
-            <UserRatingTab
-              name={userTabs[my_rating + 2].fields[1].value}
-              points={userTabs[my_rating + 2].fields[2].value}
-              place={my_rating + 2}
-            />
-          )}
+          {isAllUserTabsFetched &&
+            userTabs &&
+            my_rating < userTabs.length - 1 && (
+              <UserRatingTab
+                name={userTabs[my_rating + 2].fields[1].value}
+                points={userTabs[my_rating + 2].fields[2].value}
+                place={my_rating + 2}
+              />
+            )}
         </div>
       </div>
     </div>
