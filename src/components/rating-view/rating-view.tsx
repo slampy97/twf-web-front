@@ -32,7 +32,7 @@ function RatingView({
   fetchUserTabsStartAsync,
 }: ConnectedProps<typeof connector>) {
   const [rangUsers, setRangUsers] = useState<any[]>([]);
-  const my_rating = 55;
+  const position = 55;
   useEffect(() => {
     fetchUserTabsStartAsync({
       levelCode: null,
@@ -49,13 +49,10 @@ function RatingView({
     console.log(userTabs);
   }, [userTabs]);
 
-  const fst_check = my_rating >= 1;
-  const up2_check = my_rating > 3;
-  const up1_check = my_rating > 2;
   return (
     <div>
       <div className="fst-tab">
-        {isAllUserTabsFetched && userTabs && fst_check && userTabs[0] && (
+        {isAllUserTabsFetched && userTabs && position >= 1 && userTabs[0] && (
           <UserRatingTab
             name={userTabs[1].fields[1].value}
             points={userTabs[1].fields[2].value}
@@ -75,24 +72,24 @@ function RatingView({
         <div className="rating-views__tab">
           {isAllUserTabsFetched &&
             userTabs &&
-            up2_check &&
-            userTabs[my_rating - 2] && (
+            position > 3 &&
+            userTabs[position - 2] && (
               <UserRatingTab
-                name={userTabs[my_rating - 2].fields[1].value}
-                points={userTabs[my_rating - 2].fields[2].value}
-                place={my_rating - 2}
+                name={userTabs[position - 2].fields[1].value}
+                points={userTabs[position - 2].fields[2].value}
+                place={position - 2}
               />
             )}
         </div>
         <div className="rating-views__tab">
           {isAllUserTabsFetched &&
             userTabs &&
-            up1_check &&
-            userTabs[my_rating - 1] && (
+            position > 2 &&
+            userTabs[position - 1] && (
               <UserRatingTab
-                name={userTabs[my_rating - 1].fields[1].value}
-                points={userTabs[my_rating - 1].fields[2].value}
-                place={my_rating - 1}
+                name={userTabs[position - 1].fields[1].value}
+                points={userTabs[position - 1].fields[2].value}
+                place={position - 1}
               />
             )}
         </div>
@@ -100,12 +97,12 @@ function RatingView({
         <div className="rating-views__tab">
           {isAllUserTabsFetched &&
             userTabs &&
-            my_rating > 1 &&
-            userTabs[my_rating] && (
+            position > 1 &&
+            userTabs[position] && (
               <UserRatingTab
-                name={userTabs[my_rating].fields[1].value}
-                points={userTabs[my_rating].fields[2].value}
-                place={my_rating}
+                name={userTabs[position].fields[1].value}
+                points={userTabs[position].fields[2].value}
+                place={position}
                 currentUser={true}
               />
             )}
@@ -114,11 +111,11 @@ function RatingView({
         <div className="rating-views__tab">
           {isAllUserTabsFetched &&
             userTabs &&
-            my_rating < userTabs.length - 2 && (
+            position < userTabs.length - 2 && (
               <UserRatingTab
-                name={userTabs[my_rating + 1].fields[1].value}
-                points={userTabs[my_rating + 1].fields[2].value}
-                place={my_rating + 1}
+                name={userTabs[position + 1].fields[1].value}
+                points={userTabs[position + 1].fields[2].value}
+                place={position + 1}
               />
             )}
         </div>
@@ -126,11 +123,11 @@ function RatingView({
         <div className="rating-views__tab">
           {isAllUserTabsFetched &&
             userTabs &&
-            my_rating < userTabs.length - 1 && (
+            position < userTabs.length - 1 && (
               <UserRatingTab
-                name={userTabs[my_rating + 2].fields[1].value}
-                points={userTabs[my_rating + 2].fields[2].value}
-                place={my_rating + 2}
+                name={userTabs[position + 2].fields[1].value}
+                points={userTabs[position + 2].fields[2].value}
+                place={position + 2}
               />
             )}
         </div>
