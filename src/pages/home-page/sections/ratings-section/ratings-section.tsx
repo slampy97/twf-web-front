@@ -16,6 +16,7 @@ export interface UserData {
   name: string;
   points: number;
   place: number;
+  curUser?: boolean;
 }
 
 const RatingsSection: React.FC = () => {

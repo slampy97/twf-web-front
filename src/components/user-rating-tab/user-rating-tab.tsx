@@ -7,19 +7,19 @@ import "./user-rating-tab.scss";
 import { UserData } from "../../pages/home-page/sections/ratings-section/ratings-section";
 
 export interface UserRatingTabProps {
-  avatarUrl: string;
+  avatarUrl?: string;
   name: string;
   place: number;
   points: number;
   currentUser?: boolean;
 }
 
-const UserRatingTab: React.FC<UserData> = ({
-  //  avatarUrl,
+const UserRatingTab: React.FC<UserRatingTabProps> = ({
+  avatarUrl,
   name,
   place,
   points,
-  //  currentUser,
+  currentUser,
 }) => {
   const color = () => {
     switch (place) {
@@ -36,7 +36,13 @@ const UserRatingTab: React.FC<UserData> = ({
   const iconPath: string =
     [1, 2, 3].indexOf(place) === -1 ? mdiStar : mdiTrophy;
   return (
-    <div className="user-rating-tab">
+    <div
+      className="user-rating-tab"
+      style={{
+        color: currentUser ? "#455a64" : "#455a64",
+        backgroundColor: currentUser ? "#ADD8E6" : "#cfd8dc",
+      }}
+    >
       <div className="user-rating-tab__place">#{place}</div>
       <div className="user-rating-tab__name">{name}</div>
       <div className="user-rating-tab__points">

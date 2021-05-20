@@ -26,7 +26,7 @@ function SampleUserPage() {
         </div>
         <div className="sample-user-page__rang">
           <div>
-            <RangImage levelsPassed={18} ratingCounter={(x) => x} />
+            <RangImage levelsPassed={7} ratingCounter={(x) => x} />
           </div>
         </div>
       </div>

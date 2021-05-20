@@ -32,7 +32,7 @@ function RatingView({
   fetchUserTabsStartAsync,
 }: ConnectedProps<typeof connector>) {
   const [rangUsers, setRangUsers] = useState<any[]>([]);
-  const my_rating = 3;
+  const my_rating = 55;
   useEffect(() => {
     fetchUserTabsStartAsync({
       levelCode: null,
@@ -97,13 +97,7 @@ function RatingView({
             )}
         </div>
 
-        <div
-          className="rating-views__tab"
-          style={{
-            opacity: "1",
-            border: "0.5rem solid #9955aa",
-          }}
-        >
+        <div className="rating-views__tab">
           {isAllUserTabsFetched &&
             userTabs &&
             my_rating > 1 &&
@@ -112,6 +106,7 @@ function RatingView({
                 name={userTabs[my_rating].fields[1].value}
                 points={userTabs[my_rating].fields[2].value}
                 place={my_rating}
+                currentUser={true}
               />
             )}
         </div>
